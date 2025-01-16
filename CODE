@@ -1,0 +1,21 @@
+class MyClass;
+int id;
+function new(int id);
+this.id = id;
+endfunction
+function void display();
+$display("Object ID: %0d", id);
+endfunction
+endclass
+
+
+module top;
+MyClass my_handle[];
+ 
+int num_objects = 5; 
+initial begin
+my_handle = new[num_objects];
+for (int i = 0; i < num_objects; i++) begin my_handle[i] = new(i);
+my_handle[i].display();
+end end
+endmodule
